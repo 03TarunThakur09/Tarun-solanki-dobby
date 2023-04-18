@@ -37,6 +37,21 @@ tokenized_test = small_test_dataset.map(preprocess_function, batched=True)
 from transformers import AutoModelForSequenceClassification
 model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=2)
 ```
+### The code you provided defines a compute_metrics function that computes the evaluation metrics for a classification task using the accuracy and f1 metrics from the datasets library.
+```
+import numpy as np
+from datasets import load_metric
+
+def compute_metrics(eval_pred):
+    load_accuracy = load_metric("accuracy")
+    load_f1 = load_metric("f1")
+    
+    logits, labels = eval_pred
+    predictions = np.argmax(logits, axis=-1)
+    accuracy = load_accuracy.compute(predictions=predictions, references=labels)["accuracy"]
+    f1 = load_f1.compute(predictions=predictions, references=labels)["f1"]
+    return {"accuracy": accuracy, "f1": f1}
+```
 
 
 
