@@ -13,15 +13,21 @@
 ```
 from datasets import load_dataset
 imdb = load_dataset("imdb")
-
-
 ```
 ### This code will download and set up the DistilBERT tokenizer, which can be used to tokenize text input in preparation for input into a DistilBERT model. The distilbert-base-uncased model is a smaller, uncased version of the original DistilBERT model, and is often used as a more lightweight alternative for tasks where high computational efficiency is important.
 
 ```
 from transformers import AutoTokenizer
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
-
-
 ```
 
+### This code applies the preprocess_function to the small_train_dataset and small_test_dataset, tokenizing the input text using the DistilBERT tokenizer and truncating the sequences to the maximum sequence length of the tokenizer (by default, this is set to 512 tokens for the DistilBERT tokenizer).
+### The resulting tokenized_train and tokenized_test objects contain the tokenized and preprocessed text inputs that can be fed into a DistilBERT model.
+
+```
+def preprocess_function(examples):
+    return tokenizer(examples["text"], truncation=True)
+
+tokenized_train = small_train_dataset.map(preprocess_function, batched=True)
+tokenized_test = small_test_dataset.map(preprocess_function, batched=True)
+```
