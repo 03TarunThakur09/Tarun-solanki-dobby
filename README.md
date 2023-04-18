@@ -4,11 +4,11 @@
 !pip install datasets transformers huggingface_hub
 !apt-get install git-lfs 
 ```
-## The code you have provided is used to load the IMDB dataset using the load_dataset function from the datasets library.
+### The code you have provided is used to load the IMDB dataset using the load_dataset function from the datasets library.
 
-## To use this code, you will need to first install the datasets library by running !pip install datasets in your command line or notebook environment.
+### To use this code, you will need to first install the datasets library by running !pip install datasets in your command line or notebook environment.
 
-## Once you have installed the datasets library, you can import it and load the IMDB dataset by running the following code:
+### Once you have installed the datasets library, you can import it and load the IMDB dataset by running the following code:
 
 ```
 from datasets import load_dataset
@@ -16,3 +16,12 @@ imdb = load_dataset("imdb")
 
 
 ```
+### This code will download and set up the DistilBERT tokenizer, which can be used to tokenize text input in preparation for input into a DistilBERT model. The distilbert-base-uncased model is a smaller, uncased version of the original DistilBERT model, and is often used as a more lightweight alternative for tasks where high computational efficiency is important.
+
+```
+from transformers import AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+
+
+```
+
