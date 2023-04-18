@@ -1,14 +1,14 @@
-## To install the required libraries for your project, run the following commands:
+## To install the required libraries for the project, run the following commands:
 
 ``` 
 !pip install datasets transformers huggingface_hub
 !apt-get install git-lfs 
 ```
-### The code you have provided is used to load the IMDB dataset using the load_dataset function from the datasets library.
+### The code  is used to load the IMDB dataset using the load_dataset function from the datasets library.
 
-### To use this code, you will need to first install the datasets library by running !pip install datasets in your command line or notebook environment.
+### To use this code,  first install the datasets library by running !pip install datasets in your command line or notebook environment.
 
-### Once you have installed the datasets library, you can import it and load the IMDB dataset by running the following code:
+### Once we have installed the datasets library, we can import it and load the IMDB dataset by running the following code:
 
 ```
 from datasets import load_dataset
@@ -37,7 +37,7 @@ tokenized_test = small_test_dataset.map(preprocess_function, batched=True)
 from transformers import AutoModelForSequenceClassification
 model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=2)
 ```
-### The code you provided defines a compute_metrics function that computes the evaluation metrics for a classification task using the accuracy and f1 metrics from the datasets library.
+### The code  defines a compute_metrics function that computes the evaluation metrics for a classification task using the accuracy and f1 metrics from the datasets library.
 ```
 import numpy as np
 from datasets import load_metric
@@ -91,7 +91,7 @@ trainer = Trainer(
 trainer.train()
 ```
 
-### Once the training is complete, you can evaluate the model on the test set by running the following command:
+### Once the training is complete, we can evaluate the model on the test set by running the following command:
 ```
 trainer.evaluate()
 ```
@@ -99,14 +99,14 @@ trainer.evaluate()
 ```
 trainer.push_to_hub()
 ```
-#### you will need to install the transformers library by running !pip install transformers in your command line or notebook environment.Once you have installed the transformers library, you can import it and set up the sentiment analysis model using the following code:
+#### we will need to install the transformers library by running !pip install transformers in our command line or notebook environment.Once we have installed the transformers library, we can import it and set up the sentiment analysis model using the following code:
 
 ```
 from transformers import pipeline
 
 sentiment_model = pipeline(model="federicopascual/finetuning-sentiment-model-3000-samples")
 ```
-#### To run inferences on the model, you can pass a list of text inputs to the sentiment_model function, like so:
+#### To run inferences on the model, we can pass a list of text inputs to the sentiment_model function, like so:
 ```
 sentiment_model(["I love this movie", "This movie sucks!"])
 ```
