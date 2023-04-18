@@ -31,3 +31,15 @@ def preprocess_function(examples):
 tokenized_train = small_train_dataset.map(preprocess_function, batched=True)
 tokenized_test = small_test_dataset.map(preprocess_function, batched=True)
 ```
+## Train the model
+#### Define DistilBERT as our base model:
+```
+from transformers import AutoModelForSequenceClassification
+model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=2)
+```
+
+
+
+
+
+
