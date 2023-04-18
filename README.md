@@ -99,12 +99,22 @@ trainer.evaluate()
 ```
 trainer.push_to_hub()
 ```
+#### you will need to install the transformers library by running !pip install transformers in your command line or notebook environment.Once you have installed the transformers library, you can import it and set up the sentiment analysis model using the following code:
 
+```
+from transformers import pipeline
 
-
-
-
-
+sentiment_model = pipeline(model="federicopascual/finetuning-sentiment-model-3000-samples")
+```
+#### To run inferences on the model, you can pass a list of text inputs to the sentiment_model function, like so:
+```
+sentiment_model(["I love this movie", "This movie sucks!"])
+```
+## Result will be:
+```
+[{'label': 'LABEL_1', 'score': 0.9558863043785095},
+ {'label': 'LABEL_0', 'score': 0.9413502216339111}]
+ ```
 
 
 
